@@ -5,11 +5,31 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 const Waitlist = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if(email) {
-      // Future Integration: API to Mailchimp/Beehiiv as specified in instructions
+    if (email) {
+      setLoading(true);
+      const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+      
+      if (scriptUrl) {
+        try {
+          const formData = new FormData();
+          formData.append('Email', email);
+          formData.append('Timestamp', new Date().toISOString());
+          
+          await fetch(scriptUrl, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+          });
+        } catch (error) {
+          console.error('Error submitting email', error);
+        }
+      }
+      
+      setLoading(false);
       setSubmitted(true);
       setTimeout(() => setSubmitted(false), 4000);
       setEmail('');
