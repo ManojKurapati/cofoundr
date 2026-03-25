@@ -37,7 +37,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_GOOGLE_SHEETS_URL: ${{ vars.VITE_GOOGLE_SHEETS_URL }}
+          VITE_GOOGLE_SHEETS_URL: 'https://script.google.com/macros/s/AKfycby0YRPOC6WwgCFsvUm2Ec6foq5w7qFmSRFBg9SOfsB31HEMotQyyKY4OjxGBw29nw0d/exec'
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
