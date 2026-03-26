@@ -11,8 +11,13 @@
   --text-muted: #94A3B8;
   
   --font-sans: 'Outfit', sans-serif;
+  --font-heading: 'Verdana', Geneva, sans-serif;
   
   --radius-xl: 24px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 * {

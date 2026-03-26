@@ -12,6 +12,13 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navLinks = [
+    { label: 'AI Workers', href: '#ai-workers' },
+    { label: 'How It Works', href: '#how-it-works' },
+    { label: 'For Builders', href: '#for-builders' },
+    { label: 'Pricing', href: '#pricing' }
+  ];
+
   return (
     <motion.header 
       initial={{ y: -100 }}
@@ -39,15 +46,15 @@ const Navigation = () => {
 
         {/* Links (Desktop) */}
         <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-          {['Discover Agents', 'For Developers', 'Security & API', 'Pricing'].map((link) => (
+          {navLinks.map((link) => (
             <a 
-              key={link} 
-              href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
+              key={link.label} 
+              href={link.href}
               style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 500, transition: 'color 0.2s' }}
               onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-main)'}
               onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </nav>
@@ -71,7 +78,7 @@ const Navigation = () => {
           onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 0 25px var(--emerald-glow), inset 0 0 15px rgba(255,255,255,0.8)'}
           onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 0 15px var(--emerald-glow), inset 0 0 10px rgba(255,255,255,0.4)'}
         >
-          Request Early Access
+          Get Started
         </motion.a>
 
       </div>

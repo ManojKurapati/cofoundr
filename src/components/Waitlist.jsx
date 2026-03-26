@@ -48,17 +48,17 @@ const Waitlist = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, marginBottom: '1rem' }}>
-            The smartest companies are already hiring <span className="text-emerald">agents.</span>
+            Start automating your <span className="text-emerald">business today</span>
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginBottom: '3rem', lineHeight: 1.6 }}>
-            Secure your spot in the beta and get $500 in platform compute credits.
+            Get early access and be among the first to deploy AI workers.
           </p>
           
           <form onSubmit={handleSubmit} style={{ position: 'relative', maxWidth: '500px', margin: '0 auto' }}>
             <div className="glass" style={{ display: 'flex', padding: '6px', borderRadius: '40px', background: 'rgba(13, 22, 41, 0.8)' }}>
               <input 
                 type="email" 
-                placeholder="Enter your work email..."
+                placeholder="Enter your email..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
@@ -96,12 +96,13 @@ const Waitlist = () => {
                       fontWeight: 600,
                       cursor: 'pointer',
                       boxShadow: 'inset 0 0 10px rgba(0,255,163,0.2), 0 0 15px rgba(0,255,163,0.1)',
-                      transition: 'box-shadow 0.3s ease'
+                      transition: 'box-shadow 0.3s ease',
+                      whiteSpace: 'nowrap'
                     }}
                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = 'inset 0 0 15px rgba(0,255,163,0.4), 0 0 25px rgba(0,255,163,0.3)'}
                     onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'inset 0 0 10px rgba(0,255,163,0.2), 0 0 15px rgba(0,255,163,0.1)'}
                   >
-                    Get Early Access <ArrowRight size={18} style={{ marginLeft: '8px' }} />
+                    Try Your First AI Worker <ArrowRight size={18} style={{ marginLeft: '8px' }} />
                   </motion.button>
                 ) : (
                   <motion.div
@@ -124,7 +125,6 @@ const Waitlist = () => {
                 )}
               </AnimatePresence>
             </div>
-            {/* The Liquid Glow underneath */}
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'var(--electric-emerald)', filter: 'blur(20px)', opacity: 0.15, borderRadius: '40px', zIndex: -1, pointerEvents: 'none' }} />
           </form>
         </motion.div>
