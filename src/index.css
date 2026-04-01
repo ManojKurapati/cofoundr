@@ -128,3 +128,18 @@ body {
 .section-padding {
   padding: 120px 0;
 }
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
+  
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-only {
+    display: flex !important;
+  }
+}

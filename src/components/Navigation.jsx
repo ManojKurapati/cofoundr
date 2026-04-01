@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +47,7 @@ const Navigation = () => {
         </div>
 
         {/* Links (Desktop) */}
-        <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+        <nav className="desktop-only" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           {navLinks.map((link) => (
             <a 
               key={link.label} 
@@ -59,29 +61,88 @@ const Navigation = () => {
           ))}
         </nav>
 
-        {/* Primary CTA */}
-        <motion.a 
-          href="#waitlist"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          style={{
-            padding: '10px 20px',
-            borderRadius: '8px',
-            background: 'var(--electric-emerald)',
-            color: 'var(--deep-navy)',
-            fontWeight: 600,
-            textDecoration: 'none',
-            fontSize: '0.9rem',
-            boxShadow: '0 0 15px var(--emerald-glow), inset 0 0 10px rgba(255,255,255,0.4)',
-            transition: 'box-shadow 0.3s ease'
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 0 25px var(--emerald-glow), inset 0 0 15px rgba(255,255,255,0.8)'}
-          onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 0 15px var(--emerald-glow), inset 0 0 10px rgba(255,255,255,0.4)'}
-        >
-          Get Started
-        </motion.a>
+        {/* Primary CTA (Desktop) */}
+        <div className="desktop-only">
+          <motion.a 
+            href="#waitlist"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              padding: '10px 20px',
+              borderRadius: '8px',
+              background: 'var(--electric-emerald)',
+              color: 'var(--deep-navy)',
+              fontWeight: 600,
+              textDecoration: 'none',
+              fontSize: '0.9rem',
+              boxShadow: '0 0 15px var(--emerald-glow), inset 0 0 10px rgba(255,255,255,0.4)',
+              transition: 'box-shadow 0.3s ease',
+              display: 'inline-block'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 0 25px var(--emerald-glow), inset 0 0 15px rgba(255,255,255,0.8)'}
+            onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 0 15px var(--emerald-glow), inset 0 0 10px rgba(255,255,255,0.4)'}
+          >
+            Get Started
+          </motion.a>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <div className="mobile-only" style={{ display: 'none' }}>
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            style={{ background: 'transparent', border: 'none', color: 'var(--text-main)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+          >
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
 
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            style={{
+              background: 'var(--deep-navy-light)',
+              borderBottom: '1px solid var(--glass-border)',
+              overflow: 'hidden'
+            }}
+          >
+            <div className="container" style={{ padding: '2rem 24px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {navLinks.map((link) => (
+                <a 
+                  key={link.label} 
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{ color: 'var(--text-main)', textDecoration: 'none', fontSize: '1.1rem', fontWeight: 500 }}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a 
+                href="#waitlist"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  padding: '12px 20px',
+                  borderRadius: '8px',
+                  background: 'var(--electric-emerald)',
+                  color: 'var(--deep-navy)',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  fontSize: '1rem',
+                  textAlign: 'center',
+                  marginTop: '1rem'
+                }}
+              >
+                Get Started
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };

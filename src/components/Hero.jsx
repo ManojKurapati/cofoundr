@@ -42,11 +42,11 @@ const Hero = () => {
             Built by AI engineers. Designed for founders and operators.
           </div>
 
-          <h1 style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.03em', textShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 5.5rem)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.03em', textShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
             Replace repetitive work with <span className="text-emerald">AI workers</span> that deliver real results
           </h1>
           
-          <p style={{ fontSize: '1.3rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '750px', margin: '0 auto' }}>
+          <p style={{ fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '750px', margin: '0 auto' }}>
             Generate leads, automate workflows, and get business tasks done—without hiring or managing teams.
           </p>
         </motion.div>
@@ -56,10 +56,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', marginTop: '1rem' }}
+          style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', marginTop: '1rem', width: '100%' }}
         >
-          <a href="#waitlist" className="btn-primary" style={{ padding: '16px 36px', fontSize: '1.1rem' }}>Get Started <span style={{ marginLeft: '8px' }}>→</span></a>
-          <a href="#how-it-works" className="btn-secondary" style={{ padding: '16px 32px', fontSize: '1rem' }}>See How It Works</a>
+          <a href="#waitlist" className="btn-primary" style={{ padding: '16px 36px', fontSize: '1.1rem', flex: '1 1 auto', minWidth: '200px', maxWidth: '300px' }}>Get Started <span style={{ marginLeft: '8px' }}>→</span></a>
+          <a href="#how-it-works" className="btn-secondary" style={{ padding: '16px 32px', fontSize: '1rem', flex: '1 1 auto', minWidth: '200px', maxWidth: '300px' }}>See How It Works</a>
         </motion.div>
 
         {/* 3D Abstract Visualization */}
