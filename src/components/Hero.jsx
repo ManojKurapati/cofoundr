@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { Zap, Bot, Sparkles } from 'lucide-react';
+import { Zap, Bot, Sparkles, UserSearch, PenTool, Headphones, Settings, Briefcase } from 'lucide-react';
 
 const Hero = () => {
   const cardX = useMotionValue(0);
@@ -82,29 +82,38 @@ const Hero = () => {
             }}
           >
             {/* Central Glow */}
-            <motion.div style={{ position: 'absolute', top: '50%', left: '50%', width: 120, height: 120, x: '-50%', y: '-50%', translateZ: 40, borderRadius: '50%', background: 'radial-gradient(circle, var(--electric-emerald) 0%, transparent 70%)', filter: 'blur(10px)' }} />
-            <motion.div className="glass" style={{ position: 'absolute', top: '50%', left: '50%', width: 100, height: 100, x: '-50%', y: '-50%', translateZ: 60, borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(0,255,163,0.5)', background: 'rgba(13,22,41,0.8)', boxShadow: '0 0 30px rgba(0,255,163,0.2)' }}>
-              <Zap size={40} color="var(--electric-emerald)" />
+            <motion.div style={{ position: 'absolute', top: '50%', left: '50%', width: 140, height: 140, x: '-50%', y: '-50%', translateZ: 40, borderRadius: '50%', background: 'radial-gradient(circle, var(--electric-emerald) 0%, transparent 70%)', filter: 'blur(15px)' }} />
+            
+            <motion.div className="glass" style={{ position: 'absolute', top: '50%', left: '50%', width: 110, height: 110, x: '-50%', y: '-50%', translateZ: 60, borderRadius: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(0,255,163,0.5)', background: 'rgba(13,22,41,0.8)', boxShadow: '0 0 30px rgba(0,255,163,0.3)' }}>
+              <Bot size={48} color="var(--electric-emerald)" />
             </motion.div>
             
             {/* Floating nodes */}
-            <motion.div style={{ position: 'absolute', top: '20%', left: '15%', width: 60, height: 60, translateZ: 20, borderRadius: '16px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Sparkles size={24} color="var(--text-muted)" />
+            {/* Top Left - Lead Gen */}
+            <motion.div style={{ position: 'absolute', top: '25%', left: '15%', width: 64, height: 64, x: '-50%', y: '-50%', translateZ: 30, borderRadius: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
+              <UserSearch size={22} color="var(--text-main)" />
             </motion.div>
-            <motion.div style={{ position: 'absolute', top: '70%', left: '10%', width: 50, height: 50, translateZ: 10, borderRadius: '12px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }} />
             
-            <motion.div style={{ position: 'absolute', top: '30%', right: '15%', width: 70, height: 70, translateZ: 30, borderRadius: '16px', background: 'linear-gradient(135deg, rgba(0,255,163,0.1), rgba(0,0,0,0))', border: '1px solid rgba(0,255,163,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Bot size={30} color="var(--text-main)" />
+            {/* Bottom Left - Content */}
+            <motion.div style={{ position: 'absolute', top: '75%', left: '15%', width: 60, height: 60, x: '-50%', y: '-50%', translateZ: 20, borderRadius: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <PenTool size={20} color="var(--text-main)" />
             </motion.div>
-            <motion.div style={{ position: 'absolute', top: '65%', right: '20%', width: 40, height: 40, translateZ: 50, borderRadius: '50%', background: 'linear-gradient(135deg, rgba(0,255,163,0.1), rgba(0,0,0,0))', border: '1px solid rgba(0,255,163,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Bot size={18} color="var(--text-main)" />
+            
+            {/* Top Right - Support */}
+            <motion.div style={{ position: 'absolute', top: '25%', left: '85%', width: 64, height: 64, x: '-50%', y: '-50%', translateZ: 40, borderRadius: '16px', background: 'linear-gradient(135deg, rgba(0,255,163,0.1), rgba(0,0,0,0))', border: '1px solid rgba(0,255,163,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(0,255,163,0.1)' }}>
+              <Headphones size={24} color="var(--electric-emerald)" />
+            </motion.div>
+            
+            {/* Bottom Right - Operations */}
+            <motion.div style={{ position: 'absolute', top: '75%', left: '85%', width: 56, height: 56, x: '-50%', y: '-50%', translateZ: 50, borderRadius: '16px', background: 'linear-gradient(135deg, rgba(0,255,163,0.1), rgba(0,0,0,0))', border: '1px solid rgba(0,255,163,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(0,255,163,0.1)' }}>
+              <Settings size={20} color="var(--electric-emerald)" />
             </motion.div>
 
-            <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', translateZ: 0, pointerEvents: 'none' }}>
-              <path d="M 120 100 Q 250 150 400 150" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeDasharray="4 4" />
-              <path d="M 100 230 Q 250 150 400 150" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeDasharray="4 4" />
-              <path d="M 400 150 Q 550 150 680 120" fill="none" stroke="rgba(0,255,163,0.3)" strokeWidth="2" />
-              <path d="M 400 150 Q 550 150 640 220" fill="none" stroke="rgba(0,255,163,0.3)" strokeWidth="2" />
+            <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', translateZ: 10, pointerEvents: 'none' }} viewBox="0 0 800 300" preserveAspectRatio="none">
+              <path d="M 120 75 Q 260 150 400 150" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeDasharray="6 6" vectorEffect="non-scaling-stroke" />
+              <path d="M 120 225 Q 260 150 400 150" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeDasharray="6 6" vectorEffect="non-scaling-stroke" />
+              <path d="M 400 150 Q 540 150 680 75" fill="none" stroke="rgba(0,255,163,0.4)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+              <path d="M 400 150 Q 540 150 680 225" fill="none" stroke="rgba(0,255,163,0.4)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
             </svg>
           </motion.div>
         </motion.div>
