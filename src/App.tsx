@@ -51,7 +51,7 @@ export default function App() {
     { text: 'Type a command or click a preset shortcut above to execute agent collaboration.', type: 'system', time: '12:00:01' }
   ]);
   const [isTerminalRunning, setIsTerminalRunning] = useState(false);
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const terminalContainerRef = useRef<HTMLDivElement>(null);
 
   // Marketing Agent Playground State
   const [mktSector, setMktSector] = useState('SaaS');
@@ -101,7 +101,12 @@ export default function App() {
 
   // Scroll terminal to bottom
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalContainerRef.current) {
+      terminalContainerRef.current.scrollTo({
+        top: terminalContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   }, [terminalLines]);
 
   // Handle Preset Terminal Commands
@@ -569,7 +574,7 @@ export default function App() {
             </div>
 
             {/* Terminal Content Screen */}
-            <div className="p-4 h-[320px] overflow-y-auto font-mono text-xs sm:text-sm space-y-2.5 terminal-scroll bg-[#0b0c10]/80">
+            <div ref={terminalContainerRef} className="p-4 h-[320px] overflow-y-auto font-mono text-xs sm:text-sm space-y-2.5 terminal-scroll bg-[#0b0c10]/80">
               {terminalLines.map((line, idx) => {
                 let textCol = 'text-gray-300';
                 let tag = '';
@@ -609,7 +614,6 @@ export default function App() {
                   <span>Agents executing workflow logs...</span>
                 </div>
               )}
-              <div ref={terminalEndRef} />
             </div>
 
             {/* Terminal Input Form */}
