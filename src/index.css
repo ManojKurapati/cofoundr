@@ -5,30 +5,53 @@
   --font-display: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
   
-  --color-brand-blue: #3b82f6;
-  --color-brand-purple: #a855f7;
+  /* Clay-inspired Light Theme Colors */
+  --color-clay-bg: #FFFDF9;           /* Warm cream canvas */
+  --color-clay-ink: #0B0E14;         /* Rich charcoal text/ink */
+  --color-clay-border: #F0E5D8;      /* Soft warm border */
+  --color-clay-border-hover: #E4D5C3; /* Slightly darker border for hover */
+  --color-clay-muted: #5C6270;       /* Muted body text color */
   
-  --color-agent-sales: #3b82f6; /* Blue */
-  --color-agent-marketing: #a855f7; /* Purple */
-  --color-agent-ops: #10b981; /* Emerald */
-  --color-agent-finance: #f59e0b; /* Amber */
-  --color-agent-compliance: #ec4899; /* Pink */
-  
-  --color-bg-dark: #0a0a0a;
-  --color-bg-card: rgba(17, 17, 19, 0.8);
-  --color-border-glow: rgba(255, 255, 255, 0.05);
-  
-  --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+  /* Saturated vibrant brand colors for cards & tags */
+  --color-clay-blue-bg: #F0F6FF;
+  --color-clay-blue-text: #2563EB;
+  --color-clay-blue-border: #DDE8FF;
+
+  --color-clay-purple-bg: #F5F3FF;
+  --color-clay-purple-text: #7C3AED;
+  --color-clay-purple-border: #ECE9FE;
+
+  --color-clay-emerald-bg: #F0FDF4;
+  --color-clay-emerald-text: #16A34A;
+  --color-clay-emerald-border: #DCFCE7;
+
+  --color-clay-amber-bg: #FFFDF0;
+  --color-clay-amber-text: #D97706;
+  --color-clay-amber-border: #FDE68A;
+
+  --color-clay-pink-bg: #FFF1F2;
+  --color-clay-pink-text: #DB2777;
+  --color-clay-pink-border: #FFE4E6;
+
+  --color-clay-peach-bg: #FFF7ED;
+  --color-clay-peach-text: #EA580C;
+  --color-clay-peach-border: #FFEDD5;
+
+  --color-clay-lavender-bg: #EEF2FF;
+  --color-clay-lavender-text: #4F46E5;
+  --color-clay-lavender-border: #E0E7FF;
+
+  --animate-pulse-slow: pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
   --animate-float: float 6s ease-in-out infinite;
   
   @keyframes pulse-slow {
-    0%, 100% { opacity: 0.15; }
-    50% { opacity: 0.3; }
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 0.45; }
   }
   @keyframes glow-pulse {
-    0%, 100% { transform: scale(1); opacity: 0.4; filter: blur(40px); }
-    50% { transform: scale(1.05); opacity: 0.6; filter: blur(55px); }
+    0%, 100% { transform: scale(1); opacity: 0.35; filter: blur(50px); }
+    50% { transform: scale(1.08); opacity: 0.55; filter: blur(70px); }
   }
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -41,8 +64,8 @@ html, body {
   padding: 0;
   width: 100%;
   min-height: 100%;
-  background-color: #0a0a0a;
-  color: #e4e4e7;
+  background-color: var(--color-clay-bg);
+  color: var(--color-clay-ink);
   scroll-behavior: smooth;
   font-family: var(--font-sans);
   overflow-x: hidden;
@@ -55,41 +78,43 @@ html, body {
   flex-direction: column;
 }
 
-/* Custom styles for modern dark aesthetic */
+/* Custom styles for warm clay grid aesthetic */
 .grid-bg {
-  background-size: 40px 40px;
+  background-size: 50px 50px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(to right, rgba(226, 215, 201, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 215, 201, 0.3) 1px, transparent 1px);
 }
 
 .grid-mask {
-  mask-image: radial-gradient(circle 800px at 50% 250px, black, transparent);
-  -webkit-mask-image: radial-gradient(circle 800px at 50% 250px, black, transparent);
+  mask-image: radial-gradient(circle 900px at 50% 250px, black, transparent);
+  -webkit-mask-image: radial-gradient(circle 900px at 50% 250px, black, transparent);
 }
 
 .terminal-scroll::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
 }
 
 .terminal-scroll::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(11, 14, 20, 0.03);
+  border-radius: 4px;
 }
 
 .terminal-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 2px;
+  background: rgba(11, 14, 20, 0.12);
+  border-radius: 4px;
 }
 
 .terminal-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(11, 14, 20, 0.25);
 }
 
-/* Subtle border glow transitions */
+/* Tactile shadow borders */
 .glow-card {
   position: relative;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0px 4px 20px rgba(11, 14, 20, 0.03), 0px 1px 3px rgba(11, 14, 20, 0.02);
 }
 
 .glow-card::before {
@@ -98,7 +123,7 @@ html, body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
+  background: linear-gradient(to bottom right, rgba(11, 14, 20, 0.08), rgba(11, 14, 20, 0.02));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -106,11 +131,16 @@ html, body {
   transition: opacity 0.3s ease;
 }
 
-.glow-card:hover::before {
-  background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.25), rgba(168, 85, 247, 0.05));
+.glow-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 12px 30px rgba(11, 14, 20, 0.06), 0px 2px 6px rgba(11, 14, 20, 0.03);
 }
 
-/* Blinking terminal cursor */
+.glow-card:hover::before {
+  background: linear-gradient(to bottom right, rgba(11, 14, 20, 0.15), rgba(11, 14, 20, 0.05));
+}
+
+/* Blinking cursor */
 @keyframes blink {
   50% { opacity: 0; }
 }
@@ -118,19 +148,19 @@ html, body {
   animation: blink 1s step-end infinite;
 }
 
-/* Glassmorphism utility */
+/* Light glassmorphism */
 .glass {
-  background: rgba(17, 17, 19, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 253, 249, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-clay-border);
 }
 
 /* Scroll Reveal Animations */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
@@ -138,3 +168,4 @@ html, body {
   opacity: 1;
   transform: translateY(0);
 }
+
