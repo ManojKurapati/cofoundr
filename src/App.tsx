@@ -470,20 +470,24 @@ export default function App() {
       a: 'Not at all. You define their roles and SOPs using plain English instructions. Connecting integrations is handled via secure 1-click OAuth setup for tools like Slack, HubSpot, Gmail, and Stripe. Anyone on your ops or sales team can deploy and optimize an agent in under 10 minutes.'
     },
     {
+      q: 'How do these agents preserve our enterprise\'s tacit knowledge?',
+      a: 'Tacit knowledge is often lost when key employees leave. Cofoundr agents ingest your team\'s custom SOPs, guidelines, documentation, and historical logs, keeping your company\'s intelligence secure and permanent. They act as a permanent, shared memory for your operations.'
+    },
+    {
+      q: 'What does it mean to build an AI-native team?',
+      a: 'Building an AI-native team means your human staff shift from repetitive manual operators to high-level system supervisors. Humans validate and direct strategy, while autonomous AI agents handle execution-heavy tasks like outbound emails, SEO audits, and ledger reconciliations 24/7/365.'
+    },
+    {
+      q: 'Why is onboarding time the biggest bottleneck?',
+      a: 'Traditional onboarding takes up to 6 months of salary, overhead, and trial-and-error before an employee reaches full productivity. Cofoundr agents deploy instantly, pre-trained on your playbooks to execute tasks at peak efficiency on Day 1.'
+    },
+    {
       q: 'How does human-in-the-loop oversight work?',
       a: 'Safety and auditability are priority features. By default, agents operate in Co-Pilot mode. They stage drafted emails, invoice reconciliations, or code revisions in your dashboard and ping you on Slack. You approve, edit, or reject with a single click. Once you trust the outputs, toggle them to Autopilot for fully autonomous execution.'
     },
     {
-      q: 'Is my enterprise data kept private and secure?',
+      q: 'Is my data secure?',
       a: 'Yes. Data isolation is a core design requirement. All API interactions run inside isolated secure sandboxes. Your business records, documents, and tool credentials are encrypted at rest and in transit. Most importantly, Cofoundr never uses your operational logs or customer interactions to train public models.'
-    },
-    {
-      q: 'How do agents communicate with each other?',
-      a: 'Agents coordinate using a secure event broker. For example, when a Marketing Agent identifies a high-intent keyword gap, it updates the search campaigns. The Sales Agent monitors lead scores coming in, enriches data, and queries the Marketing Agent to draft custom copy. Once signed, the Operations Agent automates tool syncs.'
-    },
-    {
-      q: 'What is the pricing model?',
-      a: 'We offer a flat subscription model. For $999/month, you get full access to the agent marketplace (Sales, Marketing, Operations, Finance, and Compliance), unlimited data pipeline executions, custom knowledge-base training, and secure tool authentication.'
     }
   ];
 
@@ -614,18 +618,18 @@ export default function App() {
           {/* Subtle upper alert */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-clay-lavender-border bg-clay-lavender-bg text-xs text-clay-lavender-text font-semibold mb-8 animate-float shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-clay-lavender-text" />
-            <span>The Enterprise Agent Fleet has arrived</span>
+             <span>Bridge the 6-Month Onboarding Gap</span>
           </div>
 
           <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl text-clay-ink tracking-tight leading-[1.05] mb-6">
             Hire AI Agents.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-              Build unstoppable teams.
+              Build AI-Native Teams.
             </span>
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-clay-muted max-w-2xl mx-auto font-normal leading-relaxed mb-10">
-            Deploy specialized, autonomous AI agents that operate 24/7 as full-time team members. They integrate with your tools, follow detailed SOPs, and deliver measurable ROI.
+            Onboarding a new employee takes 6 months of training and overhead. Cofoundr agents deploy instantly, work alongside your human staff, and preserve your enterprise's tacit knowledge forever. Go AI-native from day one.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-20">
@@ -1266,12 +1270,12 @@ export default function App() {
         {/* SOLUTIONS / AGENT MARKETPLACE SECTION */}
         <section id="solutions" className="mb-32 scroll-mt-24 reveal">
           <div className="text-center mb-12">
-            <h2 className="text-xs uppercase tracking-widest text-clay-lavender-text font-bold mb-2">Agent Marketplace</h2>
+            <h2 className="text-xs uppercase tracking-widest text-clay-lavender-text font-bold mb-2">Build AI-Native Teams</h2>
             <h3 className="text-3xl sm:text-4xl font-display font-bold text-clay-ink tracking-tight">
-              Select Your Specialized AI Agent
+              Hire Specialized AI Teammates
             </h3>
-            <p className="text-clay-muted mt-2 max-w-xl mx-auto text-sm sm:text-base">
-              Choose from our pre-trained fleet, configure integration credentials, define standard procedures (SOPs), and deploy them.
+            <p className="text-clay-muted mt-4 max-w-xl mx-auto text-sm sm:text-base font-semibold leading-relaxed">
+              Startups can design AI-native structures from day one, while traditional enterprises can scale existing divisions by hiring agents to work alongside their human staff.
             </p>
           </div>
 
@@ -1566,10 +1570,10 @@ export default function App() {
           <div className="text-center mb-16">
             <h2 className="text-xs uppercase tracking-widest text-clay-emerald-text bg-clay-emerald-bg border border-clay-emerald-border px-3 py-1 rounded-full w-fit mx-auto font-bold mb-2">Cost Optimization</h2>
             <h3 className="text-3xl sm:text-4xl font-display font-bold text-clay-ink tracking-tight mt-3">
-              Calculate Your Operational Savings
+              Compare Human Onboarding vs. AI Teammates
             </h3>
-            <p className="text-clay-muted mt-2 max-w-lg mx-auto text-sm sm:text-base">
-              Select your average operational staffing variables to see potential immediate cost overhead cuts.
+            <p className="text-clay-muted mt-2 max-w-lg mx-auto text-sm sm:text-base font-semibold leading-relaxed">
+              It takes 6 months and substantial cost to get a human employee up to speed. Contrast that timeline with the instant deployment of Cofoundr AI agents.
             </p>
           </div>
 
@@ -1578,13 +1582,13 @@ export default function App() {
             {/* Sliders Input Panel */}
             <div className="lg:col-span-5 p-6 sm:p-8 rounded-2xl border border-clay-border bg-white flex flex-col justify-between shadow-sm text-left">
               <div>
-                <h4 className="text-base font-bold text-clay-ink mb-6">Staffing Variables</h4>
+                <h4 className="text-base font-bold text-clay-ink mb-6">Onboarding Variables</h4>
 
                 <div className="space-y-8">
                   {/* FTE slider */}
                   <div>
                     <div className="flex justify-between text-xs font-semibold mb-2">
-                      <span className="text-clay-muted">Target FTE Roles</span>
+                      <span className="text-clay-muted">Teammates to Onboard</span>
                       <span className="text-clay-ink font-bold font-mono">{roiFTEs} Employees</span>
                     </div>
                     <input
@@ -1597,14 +1601,14 @@ export default function App() {
                       className="w-full accent-clay-lavender-text h-1.5 bg-zinc-100 rounded-lg cursor-pointer"
                     />
                     <span className="text-[10px] text-clay-muted mt-1.5 block leading-normal font-medium">
-                      Full-time equivalents allocated across sales prospecting, basic copywriting, or invoice sync logs.
+                      Number of roles you need to hire and train to manage your workflows.
                     </span>
                   </div>
 
                   {/* Salary slider */}
                   <div>
                     <div className="flex justify-between text-xs font-semibold mb-2">
-                      <span className="text-clay-muted">Avg Monthly Cost / FTE</span>
+                      <span className="text-clay-muted">Ramp-Up Monthly Overhead</span>
                       <span className="text-clay-ink font-bold font-mono">${roiSalary.toLocaleString()} / mo</span>
                     </div>
                     <input
@@ -1617,7 +1621,7 @@ export default function App() {
                       className="w-full accent-clay-lavender-text h-1.5 bg-zinc-100 rounded-lg cursor-pointer"
                     />
                     <span className="text-[10px] text-clay-muted mt-1.5 block leading-normal font-medium">
-                      Includes base salaries, healthcare benefits, workspace utilities, and SaaS platform licensing seats.
+                      Includes recruitment, training hours, wages during the 6-month ramp-up phase, and tools.
                     </span>
                   </div>
                 </div>
@@ -1637,24 +1641,24 @@ export default function App() {
 
               <div>
                 <span className="text-[10px] font-mono uppercase text-clay-emerald-text px-3 py-1 rounded-full border border-clay-emerald-border bg-clay-emerald-bg font-bold">
-                  PROJECTED ROI ANALYSIS
+                  6-MONTH ONBOARDING BRIDGE
                 </span>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mt-8">
                   <div>
-                    <span className="text-xs text-clay-muted block font-semibold">FTE Staffing Monthly Cost</span>
+                    <span className="text-xs text-clay-muted block font-semibold">Ramp-Up Monthly Cost (First 6 Mos)</span>
                     <span className="text-xl font-medium text-clay-muted line-through mt-1 block font-mono">
                       ${humanSalaryFTE.toLocaleString()}
                     </span>
                   </div>
                   <div>
-                    <span className="text-xs text-clay-muted block font-semibold">Monthly Savings</span>
+                    <span className="text-xs text-clay-muted block font-semibold">Saved Monthly Overhead</span>
                     <span className="text-2xl font-bold text-clay-emerald-text mt-1 block font-mono">
                       +${netSavingsMonthly.toLocaleString()}
                     </span>
                   </div>
                   <div>
-                    <span className="text-xs text-clay-muted block font-semibold">Net Yearly Savings</span>
+                    <span className="text-xs text-clay-muted block font-semibold">Total Year 1 Savings</span>
                     <span className="text-4xl sm:text-5xl font-display font-bold text-clay-ink mt-1.5 block font-mono">
                       +${netSavingsYearly.toLocaleString()}
                     </span>
