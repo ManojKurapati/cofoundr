@@ -54,6 +54,204 @@ interface Testimonial {
 // Google Apps Script Web App endpoint linked to your Google Sheet:
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdARLx4pXorWxTOKjhQkTvMii-xCWvbxNHd1l6xtZlpSM26OG3EzVKESoXQqQhF4hI/exec";
 
+// Agents Definition with Clay styles & hover micro-interactions
+const agentsList: Agent[] = [
+  {
+    id: 'sales',
+    name: 'Sales Agent',
+    role: 'Outbound Prospecting & Objections Closer',
+    shortDesc: 'Scrapes leads, enriches prospects, and handles CRM data entry and complex objections 24/7.',
+    description: 'The Sales Agent acts as your autonomous business development representative. It works directly inside your tools, scanning lists, personalizing emails, and writing custom objections handlers to drive revenue pipeline.',
+    colorClass: 'bg-clay-lavender-bg border-clay-lavender-border text-clay-lavender-text hover:border-clay-lavender-text hover:shadow-[0_8px_30px_rgba(79,70,229,0.14)]',
+    borderColor: 'border-clay-lavender-border hover:border-clay-lavender-text',
+    glowColor: 'bg-clay-lavender-bg',
+    textColor: 'text-clay-lavender-text',
+    icon: <Users className="w-5 h-5 text-clay-lavender-text" />,
+    tags: ['Salesforce / HubSpot', 'Cold Outreach', 'LinkedIn Enlarger', 'Objection Resolver'],
+    capabilities: [
+      'Enriches pipeline prospects with real-time financial & tech stack data.',
+      'Responds to product questions & price objections instantly using pre-approved playbooks.',
+      'Saves contact detail drifts and schedules calendars on autopilot.'
+    ],
+    integrations: ['HubSpot', 'Salesforce', 'Gmail', 'Cal.com', 'Apollo.io'],
+    sopSample: 'If inbound company ARR > $10M, enrich profile via LinkedIn, draft customized value prop email addressing operational overhead, and create contact in HubSpot.'
+  },
+  {
+    id: 'marketing',
+    name: 'Marketing Agent',
+    role: 'Growth Campaigns & Content Director',
+    shortDesc: 'Drafts newsletters, monitors search ranking gaps, and launches localized paid ad tests.',
+    description: 'The Marketing Agent serves as an autonomous content copywriter and media buyer. It audits search trends, handles newsletter dispatch drafts, and analyzes paid channels to optimize spend metrics.',
+    colorClass: 'bg-clay-peach-bg border-clay-peach-border text-clay-peach-text hover:border-clay-peach-text hover:shadow-[0_8px_30px_rgba(234,88,12,0.14)]',
+    borderColor: 'border-clay-peach-border hover:border-clay-peach-text',
+    glowColor: 'bg-clay-peach-bg',
+    textColor: 'text-clay-peach-text',
+    icon: <TrendingUp className="w-5 h-5 text-clay-peach-text" />,
+    tags: ['SEO Auditing', 'Copywriting', 'Ad Campaign Management', 'Substack & Mailchimp'],
+    capabilities: [
+      'Maintains uniform brand-voice guidelines across social, email, and blog posts.',
+      'Builds keyword lists and monitors search ranking opportunities.',
+      'Drafts monthly and weekly product update newsletters for review.'
+    ],
+    integrations: ['Mailchimp', 'Substack', 'Google Ads', 'Meta Business Manager', 'Webflow'],
+    sopSample: 'Scan SEO competitors once a week. Identify keyword trends with keyword difficulty < 40, draft a 1,200-word educational outline, and save to Webflow drafts.'
+  },
+  {
+    id: 'operations',
+    name: 'Operations Agent',
+    role: 'SOP Execution & Workflow Reconciler',
+    shortDesc: 'Automates data syncs, triggers tools workflows, and alerts teammates on Slack.',
+    description: 'The Operations Agent binds your digital systems together. It watches Stripe payments, database changes, or webhook payloads, executing custom multi-step checklists and logging anomalies.',
+    colorClass: 'bg-clay-emerald-bg border-clay-emerald-border text-clay-emerald-text hover:border-clay-emerald-text hover:shadow-[0_8px_30px_rgba(22,163,74,0.14)]',
+    borderColor: 'border-clay-emerald-border hover:border-clay-emerald-text',
+    glowColor: 'bg-clay-emerald-bg',
+    textColor: 'text-clay-emerald-text',
+    icon: <Workflow className="w-5 h-5 text-clay-emerald-text" />,
+    tags: ['Webhook Triggering', 'Database Reconciling', 'Slack Alert Pipelines', 'Notion Syncs'],
+    capabilities: [
+      'Processes webhook events and executes downstream tasks in sub-seconds.',
+      'Verifies data synchronicity between internal inventory databases and external billing portals.',
+      'Pipes real-time alert summaries directly to team channels.'
+    ],
+    integrations: ['Slack', 'Stripe', 'Notion', 'Zapier APIs', 'Postgres'],
+    sopSample: 'When a new Stripe subscription is active, create a corresponding onboarding workspace in Notion, invite the user email, and notify the #sales-ops channel on Slack.'
+  },
+  {
+    id: 'compliance',
+    name: 'Compliance Agent',
+    role: 'SOC-2 Integrity & Audit Logger',
+    shortDesc: 'Monitors permissions, generates reports, and runs continuous compliance checks.',
+    description: 'The Compliance Agent operates as a continuous auditor. It tracks repository access permissions, scans logs for database drifts, and compiles security frameworks for compliance officers.',
+    colorClass: 'bg-clay-pink-bg border-clay-pink-border text-clay-pink-text hover:border-clay-pink-text hover:shadow-[0_8px_30px_rgba(219,39,119,0.14)]',
+    borderColor: 'border-clay-pink-border hover:border-clay-peach-text',
+    glowColor: 'bg-clay-pink-bg',
+    textColor: 'text-clay-pink-text',
+    icon: <Shield className="w-5 h-5 text-clay-pink-text" />,
+    tags: ['SOC-2 Integrity', 'Access Log Auditor', 'GitHub Scanners', 'Audit Reports'],
+    capabilities: [
+      'Audits file modifications and permissions daily to isolate configuration slips.',
+      'Ensures proper encryption flags are set on database objects.',
+      'Auto-compiles compliance documentation with clear execution evidence.'
+    ],
+    integrations: ['GitHub', 'AWS IAM', 'Vanta', 'Google Cloud Console', 'Jira'],
+    sopSample: 'Every 24 hours, extract access logs from AWS IAM and GitHub. Verify that no non-admin user has write access to the prod database, and log the audit report.'
+  },
+  {
+    id: 'finance',
+    name: 'Finance & Billing Agent',
+    role: 'Ledger Audit & Invoice Reconciler',
+    shortDesc: 'Generates invoices, performs Stripe audits, and checks ledger balances.',
+    description: 'The Finance Agent operates as a virtual billing clerk. It reconciles transaction logs, monitors accounting slips, generates invoices, and flags unpaid entries automatically.',
+    colorClass: 'bg-clay-amber-bg border-clay-amber-border text-clay-amber-text hover:border-clay-amber-text hover:shadow-[0_8px_30px_rgba(217,119,6,0.14)]',
+    borderColor: 'border-clay-amber-border hover:border-clay-amber-text',
+    glowColor: 'bg-clay-amber-bg',
+    textColor: 'text-clay-amber-text',
+    icon: <FileText className="w-5 h-5 text-clay-amber-text" />,
+    tags: ['Stripe Invoicing', 'Ledger Audit', 'QBO Syncing', 'Receipt Auditing'],
+    capabilities: [
+      'Generates and dispatches custom PDF invoices on closed deals.',
+      'Verifies bank payments against Quickbooks Online (QBO) invoices.',
+      'Flags billing anomalies and sets alerts for unpaid balances.'
+    ],
+    integrations: ['Stripe', 'QuickBooks', 'Xero', 'Google Drive', 'Brex'],
+    sopSample: 'On the first day of each month, extract active Stripe contracts, verify that payment amounts match invoice ledgers, and compile an Excel overview report in Google Drive.'
+  }
+];
+
+// Testimonial List with Clay colorful card styling and custom shadow effects
+const testimonials: Testimonial[] = [
+  {
+    quote: "Within two weeks, our Sales Agent enriched 1,400 inbound leads, categorized them based on custom pricing profiles, and booked 82 meetings. It operates exactly like a high-performing human representative.",
+    author: "Sarah Jenkins",
+    role: "VP of Revenue",
+    company: "Aether Analytics",
+    metrics: "82 demos booked in 14 days",
+    agentUsed: "Sales Agent",
+    gradient: "from-clay-lavender-bg to-white border-clay-lavender-border",
+    hoverEffectClass: "hover:shadow-[0_12px_35px_rgba(79,70,229,0.15)] hover:border-clay-lavender-text"
+  },
+  {
+    quote: "Our Operations Agent runs inventory syncs and Stripe reconciliation webhooks 24/7. Anomaly checks that used to occupy hours for our finance desk now resolve in less than 500 milliseconds.",
+    author: "Marcus Vance",
+    role: "Director of Business Ops",
+    company: "Vertex Logistics",
+    metrics: "90% operational time reduction",
+    agentUsed: "Operations Agent",
+    gradient: "from-clay-emerald-bg to-white border-clay-emerald-border",
+    hoverEffectClass: "hover:shadow-[0_12px_35px_rgba(22,163,74,0.15)] hover:border-clay-emerald-text"
+  },
+  {
+    quote: "SOC-2 audit prep was typically a bottleneck. Deploying the Compliance Agent gave us automated auditing across AWS, GitHub, and Jira, drafting compliance sheets live. The audit process was a breeze.",
+    author: "Diana Moreno",
+    role: "Head of Information Security",
+    company: "Supaflow",
+    metrics: "Continuous audit ready",
+    agentUsed: "Compliance Agent",
+    gradient: "from-clay-pink-bg to-white border-clay-pink-border",
+    hoverEffectClass: "hover:shadow-[0_12px_35px_rgba(219,39,119,0.15)] hover:border-clay-pink-text"
+  }
+];
+
+// How it Works Steps content
+const steps = [
+  {
+    step: '01',
+    title: 'Define the Role',
+    desc: 'Specify your agent\'s job outline, objective, and daily parameters in plain English. No complex code or syntax required.',
+    details: 'Write the role description as if you were hiring a human teammate: write out standard operating procedures (SOPs), desired outputs, constraints, and operational goals.',
+    icon: <FileText className="w-5 h-5 text-clay-lavender-text" />
+  },
+  {
+    step: '02',
+    title: 'Connect Your Tools',
+    desc: 'Connect tools like Slack, HubSpot, Salesforce, Gmail, Stripe, Notion, and databases with secure 1-click authentication.',
+    details: 'Cofoundr uses OAuth isolation to connect tools. Agents read and write only inside parameters you authorize, keeping operational accounts partitioned and audited.',
+    icon: <Workflow className="w-5 h-5 text-clay-peach-text" />
+  },
+  {
+    step: '03',
+    title: 'Train with Docs & SOPs',
+    desc: 'Upload files (PDFs, guidelines, sheets) or links. Agents ingest the exact business guidelines you want them to follow.',
+    details: 'Agents compile your uploaded manuals into operational vector memory, using context retrieval during pipeline steps to guarantee guidelines are met with zero hallucinations.',
+    icon: <Cpu className="w-5 h-5 text-clay-emerald-text" />
+  },
+  {
+    step: '04',
+    title: 'Monitor & Scale',
+    desc: 'Track logs, approve actions in co-pilot mode, and toggle to autopilot once trust is established. Scale up at will.',
+    details: 'Maintain complete administrative oversight. Keep human-in-the-loop validation for outbound drafts or billing actions, and toggle to autonomous execution when ready.',
+    icon: <Activity className="w-5 h-5 text-clay-pink-text" />
+  }
+];
+
+// FAQ Items
+const faqItems = [
+  {
+    q: 'Do Cofoundr agents require programming skills to set up?',
+    a: 'Not at all. You define their roles and SOPs using plain English instructions. Connecting integrations is handled via secure 1-click OAuth setup for tools like Slack, HubSpot, Gmail, and Stripe. Anyone on your ops or sales team can deploy and optimize an agent in under 10 minutes.'
+  },
+  {
+    q: 'How do these agents preserve our enterprise\'s tacit knowledge?',
+    a: 'Tacit knowledge is often lost when key employees leave. Cofoundr agents ingest your team\'s custom SOPs, guidelines, documentation, and historical logs, keeping your company\'s intelligence secure and permanent. They act as a permanent, shared memory for your operations.'
+  },
+  {
+    q: 'What does it mean to build an AI-native team?',
+    a: 'Building an AI-native team means your human staff shift from repetitive manual operators to high-level system supervisors. Humans validate and direct strategy, while autonomous AI agents handle execution-heavy tasks like outbound emails, SEO audits, and ledger reconciliations 24/7/365.'
+  },
+  {
+    q: 'Why is onboarding time the biggest bottleneck?',
+    a: 'Traditional onboarding takes up to 6 months of salary, overhead, and trial-and-error before an employee reaches full productivity. Cofoundr agents deploy instantly, pre-trained on your playbooks to execute tasks at peak efficiency on Day 1.'
+  },
+  {
+    q: 'How does human-in-the-loop oversight work?',
+    a: 'Safety and auditability are priority features. By default, agents operate in Co-Pilot mode. They stage drafted emails, invoice reconciliations, or code revisions in your dashboard and ping you on Slack. You approve, edit, or reject with a single click. Once you trust the outputs, toggle them to Autopilot for fully autonomous execution.'
+  },
+  {
+    q: 'Is my data secure?',
+    a: 'Yes. Data isolation is a core design requirement. All API interactions run inside isolated secure sandboxes. Your business records, documents, and tool credentials are encrypted at rest and in transit. Most importantly, Cofoundr never uses your operational logs or customer interactions to train public models.'
+  }
+];
+
 export default function App() {
   // Navigation & States
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -293,204 +491,6 @@ export default function App() {
     setIsVideoPlaying(false);
   };
 
-  // Agents Definition with Clay styles & hover micro-interactions
-  const agentsList: Agent[] = [
-    {
-      id: 'sales',
-      name: 'Sales Agent',
-      role: 'Outbound Prospecting & Objections Closer',
-      shortDesc: 'Scrapes leads, enriches prospects, and handles CRM data entry and complex objections 24/7.',
-      description: 'The Sales Agent acts as your autonomous business development representative. It works directly inside your tools, scanning lists, personalizing emails, and writing custom objections handlers to drive revenue pipeline.',
-      colorClass: 'bg-clay-lavender-bg border-clay-lavender-border text-clay-lavender-text hover:border-clay-lavender-text hover:shadow-[0_8px_30px_rgba(79,70,229,0.14)]',
-      borderColor: 'border-clay-lavender-border hover:border-clay-lavender-text',
-      glowColor: 'bg-clay-lavender-bg',
-      textColor: 'text-clay-lavender-text',
-      icon: <Users className="w-5 h-5 text-clay-lavender-text" />,
-      tags: ['Salesforce / HubSpot', 'Cold Outreach', 'LinkedIn Enlarger', 'Objection Resolver'],
-      capabilities: [
-        'Enriches pipeline prospects with real-time financial & tech stack data.',
-        'Responds to product questions & price objections instantly using pre-approved playbooks.',
-        'Saves contact detail drifts and schedules calendars on autopilot.'
-      ],
-      integrations: ['HubSpot', 'Salesforce', 'Gmail', 'Cal.com', 'Apollo.io'],
-      sopSample: 'If inbound company ARR > $10M, enrich profile via LinkedIn, draft customized value prop email addressing operational overhead, and create contact in HubSpot.'
-    },
-    {
-      id: 'marketing',
-      name: 'Marketing Agent',
-      role: 'Growth Campaigns & Content Director',
-      shortDesc: 'Drafts newsletters, monitors search ranking gaps, and launches localized paid ad tests.',
-      description: 'The Marketing Agent serves as an autonomous content copywriter and media buyer. It audits search trends, handles newsletter dispatch drafts, and analyzes paid channels to optimize spend metrics.',
-      colorClass: 'bg-clay-peach-bg border-clay-peach-border text-clay-peach-text hover:border-clay-peach-text hover:shadow-[0_8px_30px_rgba(234,88,12,0.14)]',
-      borderColor: 'border-clay-peach-border hover:border-clay-peach-text',
-      glowColor: 'bg-clay-peach-bg',
-      textColor: 'text-clay-peach-text',
-      icon: <TrendingUp className="w-5 h-5 text-clay-peach-text" />,
-      tags: ['SEO Auditing', 'Copywriting', 'Ad Campaign Management', 'Substack & Mailchimp'],
-      capabilities: [
-        'Maintains uniform brand-voice guidelines across social, email, and blog posts.',
-        'Builds keyword lists and monitors search ranking opportunities.',
-        'Drafts monthly and weekly product update newsletters for review.'
-      ],
-      integrations: ['Mailchimp', 'Substack', 'Google Ads', 'Meta Business Manager', 'Webflow'],
-      sopSample: 'Scan SEO competitors once a week. Identify keyword trends with keyword difficulty < 40, draft a 1,200-word educational outline, and save to Webflow drafts.'
-    },
-    {
-      id: 'operations',
-      name: 'Operations Agent',
-      role: 'SOP Execution & Workflow Reconciler',
-      shortDesc: 'Automates data syncs, triggers tools workflows, and alerts teammates on Slack.',
-      description: 'The Operations Agent binds your digital systems together. It watches Stripe payments, database changes, or webhook payloads, executing custom multi-step checklists and logging anomalies.',
-      colorClass: 'bg-clay-emerald-bg border-clay-emerald-border text-clay-emerald-text hover:border-clay-emerald-text hover:shadow-[0_8px_30px_rgba(22,163,74,0.14)]',
-      borderColor: 'border-clay-emerald-border hover:border-clay-emerald-text',
-      glowColor: 'bg-clay-emerald-bg',
-      textColor: 'text-clay-emerald-text',
-      icon: <Workflow className="w-5 h-5 text-clay-emerald-text" />,
-      tags: ['Webhook Triggering', 'Database Reconciling', 'Slack Alert Pipelines', 'Notion Syncs'],
-      capabilities: [
-        'Processes webhook events and executes downstream tasks in sub-seconds.',
-        'Verifies data synchronicity between internal inventory databases and external billing portals.',
-        'Pipes real-time alert summaries directly to team channels.'
-      ],
-      integrations: ['Slack', 'Stripe', 'Notion', 'Zapier APIs', 'Postgres'],
-      sopSample: 'When a new Stripe subscription is active, create a corresponding onboarding workspace in Notion, invite the user email, and notify the #sales-ops channel on Slack.'
-    },
-    {
-      id: 'compliance',
-      name: 'Compliance Agent',
-      role: 'SOC-2 Integrity & Audit Logger',
-      shortDesc: 'Monitors permissions, generates reports, and runs continuous compliance checks.',
-      description: 'The Compliance Agent operates as a continuous auditor. It tracks repository access permissions, scans logs for database drifts, and compiles security frameworks for compliance officers.',
-      colorClass: 'bg-clay-pink-bg border-clay-pink-border text-clay-pink-text hover:border-clay-pink-text hover:shadow-[0_8px_30px_rgba(219,39,119,0.14)]',
-      borderColor: 'border-clay-pink-border hover:border-clay-pink-text',
-      glowColor: 'bg-clay-pink-bg',
-      textColor: 'text-clay-pink-text',
-      icon: <Shield className="w-5 h-5 text-clay-pink-text" />,
-      tags: ['SOC-2 Integrity', 'Access Log Auditor', 'GitHub Scanners', 'Audit Reports'],
-      capabilities: [
-        'Audits file modifications and permissions daily to isolate configuration slips.',
-        'Ensures proper encryption flags are set on database objects.',
-        'Auto-compiles compliance documentation with clear execution evidence.'
-      ],
-      integrations: ['GitHub', 'AWS IAM', 'Vanta', 'Google Cloud Console', 'Jira'],
-      sopSample: 'Every 24 hours, extract access logs from AWS IAM and GitHub. Verify that no non-admin user has write access to the prod database, and log the audit report.'
-    },
-    {
-      id: 'finance',
-      name: 'Finance & Billing Agent',
-      role: 'Ledger Audit & Invoice Reconciler',
-      shortDesc: 'Generates invoices, performs Stripe audits, and checks ledger balances.',
-      description: 'The Finance Agent operates as a virtual billing clerk. It reconciles transaction logs, monitors accounting slips, generates invoices, and flags unpaid entries automatically.',
-      colorClass: 'bg-clay-amber-bg border-clay-amber-border text-clay-amber-text hover:border-clay-amber-text hover:shadow-[0_8px_30px_rgba(217,119,6,0.14)]',
-      borderColor: 'border-clay-amber-border hover:border-clay-amber-text',
-      glowColor: 'bg-clay-amber-bg',
-      textColor: 'text-clay-amber-text',
-      icon: <FileText className="w-5 h-5 text-clay-amber-text" />,
-      tags: ['Stripe Invoicing', 'Ledger Audit', 'QBO Syncing', 'Receipt Auditing'],
-      capabilities: [
-        'Generates and dispatches custom PDF invoices on closed deals.',
-        'Verifies bank payments against Quickbooks Online (QBO) invoices.',
-        'Flags billing anomalies and sets alerts for unpaid balances.'
-      ],
-      integrations: ['Stripe', 'QuickBooks', 'Xero', 'Google Drive', 'Brex'],
-      sopSample: 'On the first day of each month, extract active Stripe contracts, verify that payment amounts match invoice ledgers, and compile an Excel overview report in Google Drive.'
-    }
-  ];
-
-  // Testimonial List with Clay colorful card styling and custom shadow effects
-  const testimonials: Testimonial[] = [
-    {
-      quote: "Within two weeks, our Sales Agent enriched 1,400 inbound leads, categorized them based on custom pricing profiles, and booked 82 meetings. It operates exactly like a high-performing human representative.",
-      author: "Sarah Jenkins",
-      role: "VP of Revenue",
-      company: "Aether Analytics",
-      metrics: "82 demos booked in 14 days",
-      agentUsed: "Sales Agent",
-      gradient: "from-clay-lavender-bg to-white border-clay-lavender-border",
-      hoverEffectClass: "hover:shadow-[0_12px_35px_rgba(79,70,229,0.15)] hover:border-clay-lavender-text"
-    },
-    {
-      quote: "Our Operations Agent runs inventory syncs and Stripe reconciliation webhooks 24/7. Anomaly checks that used to occupy hours for our finance desk now resolve in less than 500 milliseconds.",
-      author: "Marcus Vance",
-      role: "Director of Business Ops",
-      company: "Vertex Logistics",
-      metrics: "90% operational time reduction",
-      agentUsed: "Operations Agent",
-      gradient: "from-clay-emerald-bg to-white border-clay-emerald-border",
-      hoverEffectClass: "hover:shadow-[0_12px_35px_rgba(22,163,74,0.15)] hover:border-clay-emerald-text"
-    },
-    {
-      quote: "SOC-2 audit prep was typically a bottleneck. Deploying the Compliance Agent gave us automated auditing across AWS, GitHub, and Jira, drafting compliance sheets live. The audit process was a breeze.",
-      author: "Diana Moreno",
-      role: "Head of Information Security",
-      company: "Supaflow",
-      metrics: "Continuous audit ready",
-      agentUsed: "Compliance Agent",
-      gradient: "from-clay-pink-bg to-white border-clay-pink-border",
-      hoverEffectClass: "hover:shadow-[0_12px_35px_rgba(219,39,119,0.15)] hover:border-clay-pink-text"
-    }
-  ];
-
-  // How it Works Steps content
-  const steps = [
-    {
-      step: '01',
-      title: 'Define the Role',
-      desc: 'Specify your agent\'s job outline, objective, and daily parameters in plain English. No complex code or syntax required.',
-      details: 'Write the role description as if you were hiring a human teammate: write out standard operating procedures (SOPs), desired outputs, constraints, and operational goals.',
-      icon: <FileText className="w-5 h-5 text-clay-lavender-text" />
-    },
-    {
-      step: '02',
-      title: 'Connect Your Tools',
-      desc: 'Connect tools like Slack, HubSpot, Salesforce, Gmail, Stripe, Notion, and databases with secure 1-click authentication.',
-      details: 'Cofoundr uses OAuth isolation to connect tools. Agents read and write only inside parameters you authorize, keeping operational accounts partitioned and audited.',
-      icon: <Workflow className="w-5 h-5 text-clay-peach-text" />
-    },
-    {
-      step: '03',
-      title: 'Train with Docs & SOPs',
-      desc: 'Upload files (PDFs, guidelines, sheets) or links. Agents ingest the exact business guidelines you want them to follow.',
-      details: 'Agents compile your uploaded manuals into operational vector memory, using context retrieval during pipeline steps to guarantee guidelines are met with zero hallucinations.',
-      icon: <Cpu className="w-5 h-5 text-clay-emerald-text" />
-    },
-    {
-      step: '04',
-      title: 'Monitor & Scale',
-      desc: 'Track logs, approve actions in co-pilot mode, and toggle to autopilot once trust is established. Scale up at will.',
-      details: 'Maintain complete administrative oversight. Keep human-in-the-loop validation for outbound drafts or billing actions, and toggle to autonomous execution when ready.',
-      icon: <Activity className="w-5 h-5 text-clay-pink-text" />
-    }
-  ];
-
-  // FAQ Items
-  const faqItems = [
-    {
-      q: 'Do Cofoundr agents require programming skills to set up?',
-      a: 'Not at all. You define their roles and SOPs using plain English instructions. Connecting integrations is handled via secure 1-click OAuth setup for tools like Slack, HubSpot, Gmail, and Stripe. Anyone on your ops or sales team can deploy and optimize an agent in under 10 minutes.'
-    },
-    {
-      q: 'How do these agents preserve our enterprise\'s tacit knowledge?',
-      a: 'Tacit knowledge is often lost when key employees leave. Cofoundr agents ingest your team\'s custom SOPs, guidelines, documentation, and historical logs, keeping your company\'s intelligence secure and permanent. They act as a permanent, shared memory for your operations.'
-    },
-    {
-      q: 'What does it mean to build an AI-native team?',
-      a: 'Building an AI-native team means your human staff shift from repetitive manual operators to high-level system supervisors. Humans validate and direct strategy, while autonomous AI agents handle execution-heavy tasks like outbound emails, SEO audits, and ledger reconciliations 24/7/365.'
-    },
-    {
-      q: 'Why is onboarding time the biggest bottleneck?',
-      a: 'Traditional onboarding takes up to 6 months of salary, overhead, and trial-and-error before an employee reaches full productivity. Cofoundr agents deploy instantly, pre-trained on your playbooks to execute tasks at peak efficiency on Day 1.'
-    },
-    {
-      q: 'How does human-in-the-loop oversight work?',
-      a: 'Safety and auditability are priority features. By default, agents operate in Co-Pilot mode. They stage drafted emails, invoice reconciliations, or code revisions in your dashboard and ping you on Slack. You approve, edit, or reject with a single click. Once you trust the outputs, toggle them to Autopilot for fully autonomous execution.'
-    },
-    {
-      q: 'Is my data secure?',
-      a: 'Yes. Data isolation is a core design requirement. All API interactions run inside isolated secure sandboxes. Your business records, documents, and tool credentials are encrypted at rest and in transit. Most importantly, Cofoundr never uses your operational logs or customer interactions to train public models.'
-    }
-  ];
-
   // ROI math variables
   const monthlyAIExtended = 999;
   const humanSalaryFTE = roiFTEs * roiSalary;
@@ -629,7 +629,7 @@ export default function App() {
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-clay-muted max-w-2xl mx-auto font-normal leading-relaxed mb-10">
-            Onboarding a new employee takes 6 months of training and overhead. Cofoundr agents deploy instantly, work alongside your human staff, and preserve your enterprise's tacit knowledge forever. Go AI-native from day one.
+            Cofoundr agents deploy instantly, automate manual operations 24/7, and preserve your enterprise's tacit knowledge forever.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-20">
@@ -839,9 +839,6 @@ export default function App() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
               {/* Left description */}
               <div className="lg:col-span-6 space-y-6">
-                <span className="px-3 py-1 bg-white border border-clay-peach-border text-clay-peach-text rounded-full text-xs font-bold uppercase tracking-widest">
-                  Custom Roles
-                </span>
                 <h2 className="font-display font-bold text-3xl sm:text-4xl text-clay-ink tracking-tight leading-tight">
                   Tell us what you need. <br />
                   Our agents will work on that.
@@ -998,11 +995,6 @@ export default function App() {
             
             {/* Left Column: Copy & Details */}
             <div className="lg:col-span-5 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-clay-lavender-border bg-clay-lavender-bg text-xs font-semibold text-clay-lavender-text">
-                <Sparkles className="w-3.5 h-3.5 text-clay-lavender-text" />
-                <span>Agent Sail In Action</span>
-              </div>
-              
               <h2 className="font-display font-bold text-3xl sm:text-4xl text-clay-ink tracking-tight leading-tight">
                 Meet Agent Sail, Your Autonomous Sales Closer
               </h2>
@@ -1055,9 +1047,6 @@ export default function App() {
         {/* NEW SCROLL SECTION: GET INTELLIGENCE FROM THE MOST COMPLETE AGENT MARKETPLACE */}
         <section className="mb-32 max-w-5xl mx-auto text-center">
           <div className="mb-16 reveal">
-            <span className="text-xs uppercase tracking-widest text-clay-lavender-text bg-clay-lavender-bg border border-clay-lavender-border px-3 py-1.5 rounded-full w-fit mx-auto font-bold mb-4 block">
-              Complete Data & Agent Ecosystem
-            </span>
             <h2 className="text-3xl sm:text-5xl font-display font-bold text-clay-ink tracking-tight mt-4 leading-tight">
               Get intelligence from the most complete agent marketplace
             </h2>
@@ -1070,7 +1059,7 @@ export default function App() {
           <div className="flex flex-col gap-16 relative">
             
             {/* Card 1: Sales / Outbound Close */}
-            <div className="sticky top-20 z-10 w-full bg-[#EEF2FF] border border-clay-lavender-border rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgba(79,70,229,0.06)] hover:shadow-[0_12px_35px_rgba(79,70,229,0.12)] hover:translate-y-[-4px] transition-all duration-300 text-left grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[380px]">
+            <div className="sticky top-20 z-10 w-full bg-clay-lavender-bg border border-clay-lavender-border rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgba(79,70,229,0.06)] hover:shadow-[0_12px_35px_rgba(79,70,229,0.12)] hover:translate-y-[-4px] transition-all duration-300 text-left grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[380px]">
               <div className="lg:col-span-6 space-y-4">
                 <span className="px-3 py-1 bg-white/60 border border-clay-lavender-border text-clay-lavender-text rounded-full text-xs font-extrabold uppercase tracking-widest">
                   Sales
@@ -1112,13 +1101,17 @@ export default function App() {
                 <img 
                   src="/illustration_sales.png" 
                   alt="Sales Illustration" 
-                  className="w-full max-w-[280px] object-contain animate-float" 
+                  className="w-full max-w-[280px] object-contain animate-float"
+                  loading="lazy"
+                  decoding="async"
+                  width="280"
+                  height="280"
                 />
               </div>
             </div>
 
             {/* Card 2: Marketing / Growth Campaigns */}
-            <div className="sticky top-24 z-20 w-full bg-[#FFF7ED] border border-clay-peach-border rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgba(234,88,12,0.06)] hover:shadow-[0_12px_35px_rgba(234,88,12,0.12)] hover:translate-y-[-4px] transition-all duration-300 text-left grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[380px]">
+            <div className="sticky top-24 z-20 w-full bg-clay-peach-bg border border-clay-peach-border rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgba(234,88,12,0.06)] hover:shadow-[0_12px_35px_rgba(234,88,12,0.12)] hover:translate-y-[-4px] transition-all duration-300 text-left grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[380px]">
               <div className="lg:col-span-6 space-y-4">
                 <span className="px-3 py-1 bg-white/60 border border-clay-peach-border text-clay-peach-text rounded-full text-xs font-extrabold uppercase tracking-widest">
                   Marketing
@@ -1162,12 +1155,16 @@ export default function App() {
                   alt="Marketing Illustration" 
                   className="w-full max-w-[280px] object-contain animate-float"
                   style={{ animationDelay: '1.5s' }}
+                  loading="lazy"
+                  decoding="async"
+                  width="280"
+                  height="280"
                 />
               </div>
             </div>
 
             {/* Card 3: Operations / SOP Automation */}
-            <div className="sticky top-28 z-30 w-full bg-[#F0FDF4] border border-clay-emerald-border rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgba(22,163,74,0.06)] hover:shadow-[0_12px_35px_rgba(22,163,74,0.12)] hover:translate-y-[-4px] transition-all duration-300 text-left grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[380px]">
+            <div className="sticky top-28 z-30 w-full bg-clay-emerald-bg border border-clay-emerald-border rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgba(22,163,74,0.06)] hover:shadow-[0_12px_35px_rgba(22,163,74,0.12)] hover:translate-y-[-4px] transition-all duration-300 text-left grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[380px]">
               <div className="lg:col-span-6 space-y-4">
                 <span className="px-3 py-1 bg-white/60 border border-clay-emerald-border text-clay-emerald-text rounded-full text-xs font-extrabold uppercase tracking-widest">
                   Operations
@@ -1211,12 +1208,16 @@ export default function App() {
                   alt="Operations Illustration" 
                   className="w-full max-w-[280px] object-contain animate-float"
                   style={{ animationDelay: '3s' }}
+                  loading="lazy"
+                  decoding="async"
+                  width="280"
+                  height="280"
                 />
               </div>
             </div>
 
             {/* Card 4: Finance / Invoice Reconciliation */}
-            <div className="sticky top-32 z-40 w-full bg-[#FFFDF0] border border-clay-amber-border rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgba(217,119,6,0.06)] hover:shadow-[0_12px_35px_rgba(217,119,6,0.12)] hover:translate-y-[-4px] transition-all duration-300 text-left grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[380px]">
+            <div className="sticky top-32 z-40 w-full bg-clay-amber-bg border border-clay-amber-border rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgba(217,119,6,0.06)] hover:shadow-[0_12px_35px_rgba(217,119,6,0.12)] hover:translate-y-[-4px] transition-all duration-300 text-left grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[380px]">
               <div className="lg:col-span-6 space-y-4">
                 <span className="px-3 py-1 bg-white/60 border border-clay-amber-border text-clay-amber-text rounded-full text-xs font-extrabold uppercase tracking-widest">
                   Finance
@@ -1260,6 +1261,10 @@ export default function App() {
                   alt="Finance Illustration" 
                   className="w-full max-w-[280px] object-contain animate-float"
                   style={{ animationDelay: '4.5s' }}
+                  loading="lazy"
+                  decoding="async"
+                  width="280"
+                  height="280"
                 />
               </div>
             </div>
@@ -1270,7 +1275,7 @@ export default function App() {
         {/* SOLUTIONS / AGENT MARKETPLACE SECTION */}
         <section id="solutions" className="mb-32 scroll-mt-24 reveal">
           <div className="text-center mb-12">
-            <h2 className="text-xs uppercase tracking-widest text-clay-lavender-text font-bold mb-2">Build AI-Native Teams</h2>
+            <h2 className="text-xs uppercase tracking-widest text-clay-lavender-text font-bold mb-2">Automated Capability Marketplace</h2>
             <h3 className="text-3xl sm:text-4xl font-display font-bold text-clay-ink tracking-tight">
               Hire Specialized AI Teammates
             </h3>
@@ -1394,7 +1399,6 @@ export default function App() {
         {/* HOW IT WORKS SECTION */}
         <section id="how-it-works" className="mb-32 scroll-mt-24 reveal">
           <div className="text-center mb-16">
-            <h2 className="text-xs uppercase tracking-widest text-clay-purple-text bg-clay-purple-bg border border-clay-purple-border px-3 py-1 rounded-full w-fit mx-auto font-bold mb-2">Step-by-Step</h2>
             <h3 className="text-3xl sm:text-4xl font-display font-bold text-clay-ink tracking-tight mt-3">
               Deploy Your Autonomous Workforce
             </h3>
@@ -1518,7 +1522,6 @@ export default function App() {
         {/* USE CASES & TESTIMONIALS SECTION */}
         <section id="testimonials" className="mb-32 scroll-mt-24 reveal">
           <div className="text-center mb-16">
-            <h2 className="text-xs uppercase tracking-widest text-clay-pink-text bg-clay-pink-bg border border-clay-pink-border px-3 py-1 rounded-full w-fit mx-auto font-bold mb-2">Customer Success</h2>
             <h3 className="text-3xl sm:text-4xl font-display font-bold text-clay-ink tracking-tight mt-3">
               Validated Real-World Impact
             </h3>
@@ -1568,7 +1571,6 @@ export default function App() {
         {/* ROI CALCULATOR SECTION */}
         <section className="mb-32 reveal">
           <div className="text-center mb-16">
-            <h2 className="text-xs uppercase tracking-widest text-clay-emerald-text bg-clay-emerald-bg border border-clay-emerald-border px-3 py-1 rounded-full w-fit mx-auto font-bold mb-2">Cost Optimization</h2>
             <h3 className="text-3xl sm:text-4xl font-display font-bold text-clay-ink tracking-tight mt-3">
               Compare Human Onboarding vs. AI Teammates
             </h3>
@@ -1695,7 +1697,6 @@ export default function App() {
         {/* PRICING FLAT BUNDLE SECTION */}
         <section id="pricing" className="mb-32 scroll-mt-24 max-w-4xl mx-auto reveal">
           <div className="text-center mb-12">
-            <h2 className="text-xs uppercase tracking-widest text-clay-purple-text bg-clay-purple-bg border border-clay-purple-border px-3 py-1 rounded-full w-fit mx-auto font-bold mb-2">Pricing Structure</h2>
             <h3 className="text-3xl sm:text-4xl font-display font-bold text-clay-ink tracking-tight mt-3">
               Unlock Your Entire AI Suite
             </h3>
@@ -1756,7 +1757,6 @@ export default function App() {
         {/* FAQ ACCORDION SECTION */}
         <section id="faq" className="mb-32 scroll-mt-24 max-w-3xl mx-auto reveal">
           <div className="text-center mb-12">
-            <h2 className="text-xs uppercase tracking-widest text-clay-muted font-bold mb-2">Have Questions?</h2>
             <h3 className="text-2xl sm:text-3xl font-display font-bold text-clay-ink tracking-tight">
               Frequently Asked Questions
             </h3>

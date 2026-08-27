@@ -5,57 +5,57 @@
   --font-display: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
   
-  /* Clay-inspired Light Theme Colors */
+  /* Premium Light Theme Colors */
   --color-clay-bg: #FFFDF9;           /* Warm cream canvas */
-  --color-clay-ink: #0B0E14;         /* Rich charcoal text/ink */
-  --color-clay-border: #F0E5D8;      /* Soft warm border */
-  --color-clay-border-hover: #E4D5C3; /* Slightly darker border for hover */
-  --color-clay-muted: #5C6270;       /* Muted body text color */
+  --color-clay-ink: #090D16;         /* Deep rich charcoal ink */
+  --color-clay-border: #ECE5DC;      /* Soft warm sand border */
+  --color-clay-border-hover: #D8CEBF; /* Darker border for hover states */
+  --color-clay-muted: #575D69;       /* Slate-neutral body text */
   
-  /* Saturated vibrant brand colors for cards & tags */
-  --color-clay-blue-bg: #F0F6FF;
-  --color-clay-blue-text: #2563EB;
-  --color-clay-blue-border: #DDE8FF;
+  /* Desaturated, unified category colors for tags and panels */
+  --color-clay-blue-bg: #F4F6F9;
+  --color-clay-blue-text: #355C92;
+  --color-clay-blue-border: #E2E8F1;
 
-  --color-clay-purple-bg: #F5F3FF;
-  --color-clay-purple-text: #7C3AED;
-  --color-clay-purple-border: #ECE9FE;
+  --color-clay-purple-bg: #F4F2F9;
+  --color-clay-purple-text: #613BAE;
+  --color-clay-purple-border: #E5E0F2;
 
-  --color-clay-emerald-bg: #F0FDF4;
-  --color-clay-emerald-text: #16A34A;
-  --color-clay-emerald-border: #DCFCE7;
+  --color-clay-emerald-bg: #F3F7F5;
+  --color-clay-emerald-text: #2B6D4A;
+  --color-clay-emerald-border: #E0ECE6;
 
-  --color-clay-amber-bg: #FFFDF0;
-  --color-clay-amber-text: #D97706;
-  --color-clay-amber-border: #FDE68A;
+  --color-clay-amber-bg: #F9F7F3;
+  --color-clay-amber-text: #805A20;
+  --color-clay-amber-border: #ECE7DC;
 
-  --color-clay-pink-bg: #FFF1F2;
-  --color-clay-pink-text: #DB2777;
-  --color-clay-pink-border: #FFE4E6;
+  --color-clay-pink-bg: #F8F3F5;
+  --color-clay-pink-text: #A82B61;
+  --color-clay-pink-border: #E8DCE2;
 
-  --color-clay-peach-bg: #FFF7ED;
-  --color-clay-peach-text: #EA580C;
-  --color-clay-peach-border: #FFEDD5;
+  --color-clay-peach-bg: #FAF5F3;
+  --color-clay-peach-text: #9F4A21;
+  --color-clay-peach-border: #ECE2DC;
 
-  --color-clay-lavender-bg: #EEF2FF;
-  --color-clay-lavender-text: #4F46E5;
-  --color-clay-lavender-border: #E0E7FF;
+  --color-clay-lavender-bg: #F2F1FB;
+  --color-clay-lavender-text: #4B36D7;
+  --color-clay-lavender-border: #E2E0F5;
 
-  --animate-pulse-slow: pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
-  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow-pulse: glow-pulse 6s ease-in-out infinite;
+  --animate-float: float 8s ease-in-out infinite;
   
   @keyframes pulse-slow {
-    0%, 100% { opacity: 0.25; }
-    50% { opacity: 0.45; }
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.3; }
   }
   @keyframes glow-pulse {
-    0%, 100% { transform: scale(1); opacity: 0.35; filter: blur(50px); }
-    50% { transform: scale(1.08); opacity: 0.55; filter: blur(70px); }
+    0%, 100% { transform: scale(1); opacity: 0.2; filter: blur(60px); }
+    50% { transform: scale(1.05); opacity: 0.35; filter: blur(80px); }
   }
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-4px); }
   }
 }
 
